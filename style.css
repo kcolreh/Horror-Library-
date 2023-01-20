@@ -41,3 +41,31 @@ button {
   text-align: center;
   border: red solid 1px;
 }
+
+.form-container {
+  display: flex;
+  justify-content: center;
+}
+
+.form-text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form {
+  padding-bottom: 1rem;
+  border: 1px solid rgb(255, 0, 183);
+}
+
+form > div {
+  margin: 1rem;
+}
+
+form > div > label {
+  margin: 1rem;
+}
+
+form > div > input {
+  width: 70%;
+}

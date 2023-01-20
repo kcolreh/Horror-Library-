@@ -21,8 +21,8 @@ function addMovieToLibrary() {
 addMovieToLibrary();
 console.log(myMovieLibrary);
 
+// Below are functions to add a new card clone to the grid
 const addMovieBtn = document.getElementById('addMoviebtn');
-
 let idCounter = 0;
 
 function addtogrid() {
