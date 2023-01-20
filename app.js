@@ -20,3 +20,24 @@ function addMovieToLibrary() {
 
 addMovieToLibrary();
 console.log(myMovieLibrary);
+
+const addMovieBtn = document.getElementById('addMoviebtn');
+
+let idCounter = 0;
+
+function addtogrid() {
+    const cardGrid = document.getElementById('card-grid');
+    const oldcard = document.getElementById('original-card');
+    const copyCard = oldcard.cloneNode(true);
+    copyCard.id = `card-${idCounter}`;
+    cardGrid.appendChild(copyCard);
+}
+
+function newCardId() {
+    idCounter += 1;
+}
+
+addMovieBtn.addEventListener('click', () => {
+    newCardId();
+    addtogrid();
+});
