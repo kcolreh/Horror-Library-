@@ -1,3 +1,43 @@
-h1 {
-  color: red;
+body {
+  padding: 3rem;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  height: 5rem;
+  width: 50%;
+  margin: 2 rem;
+  font-size: 2rem;
+}
+
+.movie-card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin: 2rem;
+}
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px black solid;
+}
+
+.cards > p {
+  width: 80%;
+  text-align: center;
+  border: red solid 1px;
 }
