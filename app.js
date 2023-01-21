@@ -35,7 +35,6 @@ function addMovieToLibrary() {
     return myMovieLibrary.push(newMovie);
 }
 
-console.log(myMovieLibrary);
 // Below are functions to add a new card clone to the grid
 
 function addtogrid() {
@@ -58,4 +57,5 @@ addMovieBtn.addEventListener('click', () => {
 movieForm.addEventListener('submit', (event) => {
     event.preventDefault();
     addMovieToLibrary();
+    console.log(myMovieLibrary);
 });

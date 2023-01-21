@@ -33,13 +33,14 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px black solid;
+  border: 5px black solid;
 }
 
 .cards > p {
   width: 80%;
   text-align: center;
-  border: red solid 1px;
+  border: black solid 2px;
+  border-radius: 0.2rem;
 }
 
 .form-container {
@@ -47,25 +48,43 @@ button {
   justify-content: center;
 }
 
-.form-text-container {
+.form-text-container,
+.form-button-container {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-form {
-  padding-bottom: 1rem;
-  border: 1px solid rgb(255, 0, 183);
+.form-button-container {
+  margin: 4rem 0 4rem 0;
 }
 
-form > div {
+form {
+  border: 3px solid black;
+  border-radius: 1rem;
+}
+
+form > .form-text-container {
   margin: 1rem;
 }
 
 form > div > label {
+  font-size: 1.5rem;
   margin: 1rem;
 }
 
 form > div > input {
-  width: 70%;
+  width: 80%;
+  border-radius: 0.1rem;
+}
+
+form > div > button {
+  width: max-content;
+  height: max-content;
+  font-size: 2rem;
+  border: none;
+  padding: 1rem;
+  background: black;
+  color: white;
+  border-radius: 1rem;
 }
