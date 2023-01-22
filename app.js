@@ -1,6 +1,5 @@
 const addMovieBtn = document.getElementById('addMoviebtn');
 const movieForm = document.getElementById('inputForm');
-// const movieCard = document.getElementById('original-card');
 const myMovieLibrary = [];
 let idCounter = 0;
 
@@ -11,7 +10,7 @@ function Movie(title, year, rating, director, status) {
     this.year = year;
     this.rating = rating;
     this.returnMovieInfo = function returnMovieInfo() {
-        return `${title} is made in ${year} and has a rating on IMDB of ${rating}, directed by ${director} and i have ${status} this movie`;
+        return `${title}, ${year}, ${rating}, ${director}, ${status}`;
     };
 }
 
@@ -33,6 +32,23 @@ function addMovieToLibrary() {
     const userInput = movieData();
     const newMovie = userInput.returnMovieInfo() + myMovieLibrary;
     return myMovieLibrary.push(newMovie);
+}
+
+function displayMovieLibrary() {
+    const title = document.getElementById('display-title');
+    const director = document.getElementById('display-director');
+    const year = document.getElementById('display-year');
+    const rating = document.getElementById('display-rating');
+    const status = document.getElementById('display-status');
+    myMovieLibrary.forEach((string) => {
+        const splitString = string.split(', ');
+        const [movieTitle, movieDirector, movieYear, movieRating, movieStatus] = splitString;
+        title.innerHTML = movieTitle;
+        director.innerHTML = movieDirector;
+        year.innerHTML = movieYear;
+        rating.innerHTML = movieRating;
+        status.innerHTML = movieStatus;
+    });
 }
 
 // Below are functions to add a new card clone to the grid
@@ -57,5 +73,6 @@ addMovieBtn.addEventListener('click', () => {
 movieForm.addEventListener('submit', (event) => {
     event.preventDefault();
     addMovieToLibrary();
+    displayMovieLibrary();
     console.log(myMovieLibrary);
 });
