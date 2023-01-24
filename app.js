@@ -30,19 +30,20 @@ function movieData() {
 
 function addMovieToLibrary() {
     const userInput = movieData();
-    const newMovie = userInput.returnMovieInfo() + myMovieLibrary;
+    const newMovie = userInput.returnMovieInfo();
     return myMovieLibrary.push(newMovie);
 }
 
 function displayMovieLibrary() {
-    const title = document.getElementById('display-title');
-    const director = document.getElementById('display-director');
-    const year = document.getElementById('display-year');
-    const rating = document.getElementById('display-rating');
-    const status = document.getElementById('display-status');
+    const title = document.getElementById(`paragraph-${0}-${idCounter}`);
+    const director = document.getElementById(`paragraph-${1}-${idCounter}`);
+    const year = document.getElementById(`paragraph-${2}-${idCounter}`);
+    const rating = document.getElementById(`paragraph-${3}-${idCounter}`);
+    const status = document.getElementById(`paragraph-${4}-${idCounter}`);
     myMovieLibrary.forEach((string) => {
         const splitString = string.split(', ');
         const [movieTitle, movieDirector, movieYear, movieRating, movieStatus] = splitString;
+        console.log([movieTitle, movieDirector, movieYear, movieRating, movieStatus]);
         title.innerHTML = movieTitle;
         director.innerHTML = movieDirector;
         year.innerHTML = movieYear;
@@ -51,28 +52,72 @@ function displayMovieLibrary() {
     });
 }
 
-// Below are functions to add a new card clone to the grid
+function clearFormData() {
+    const movieTitle = document.getElementById('title');
+    const movieDirector = document.getElementById('director');
+    const movieYear = document.getElementById('year');
+    const movieRating = document.getElementById('rating');
+    const movieStatus = document.getElementById('status');
+    movieTitle.value = '';
+    movieDirector.value = '';
+    movieYear.value = '';
+    movieRating.value = '';
+    movieStatus.value = '';
+}
 
-function addtogrid() {
-    const cardGrid = document.getElementById('card-grid');
-    const oldcard = document.getElementById('original-card');
-    const copyCard = oldcard.cloneNode(true);
-    copyCard.id = `card-${idCounter}`;
-    cardGrid.appendChild(copyCard);
+function showForm() {
+    const movieFormContainer = document.getElementById('form-container');
+    const fullContentPage = document.getElementById('full-content-container');
+    movieFormContainer.classList.add('form-container-visibility');
+    fullContentPage.classList.add('full-content-container');
+    movieForm.classList.add('form-positioning');
+    addMovieBtn.disabled = true;
+}
+
+function hideForm() {
+    const movieFormContainer = document.getElementById('form-container');
+    const fullContentPage = document.getElementById('full-content-container');
+    movieFormContainer.classList.remove('form-container-visibility');
+    fullContentPage.classList.remove('full-content-container');
+    movieForm.classList.remove('form-positioning');
+    addMovieBtn.disabled = false;
 }
 
 function newCardId() {
     idCounter += 1;
 }
 
+function addRemoveButtonToCard() {
+    const removeButton = document.createElement('button');
+    removeButton.id = `button-${idCounter}`;
+    removeButton.classList.add('card-remove-button');
+    removeButton.innerText = 'Remove';
+    document.getElementById(`card-${idCounter}`).appendChild(removeButton);
+}
+
+function createCardInGrid() {
+    const divContainer = document.createElement('div');
+    divContainer.id = `card-${idCounter}`;
+    divContainer.classList.add('cards');
+    document.getElementById('card-grid').appendChild(divContainer);
+    for (let i = 0; i < 5; i += 1) {
+        const paragraph = document.createElement('p');
+        paragraph.innerText = '';
+        paragraph.id = `paragraph-${i}-${idCounter}`;
+        document.getElementById(`card-${idCounter}`).appendChild(paragraph);
+    } addRemoveButtonToCard();
+}
+
 addMovieBtn.addEventListener('click', () => {
+    clearFormData();
+    showForm();
     newCardId();
-    addtogrid();
+    createCardInGrid();
 });
 
 movieForm.addEventListener('submit', (event) => {
     event.preventDefault();
     addMovieToLibrary();
     displayMovieLibrary();
-    console.log(myMovieLibrary);
+    hideForm();
 });

@@ -9,6 +9,7 @@
     <script src="./app.js" defer></script>
   </head>
   <body>
+      <div id="full-content-container">
     <header>
       <h1>Library</h1>
     </header>
@@ -17,16 +18,12 @@
         <button id="addMoviebtn">Add Movie</button>
       </div>
       <div id="card-grid" class="movie-card-container">
-        <div id="original-card" class="cards">
-          <p id="display-title">Title</p>
-          <p id="display-director">Director</p>
-          <p id="display-year">Year</p>
-          <p id="display-rating">Rating</p>
-          <p id="display-status">Status</p>
-        </div>
+        
         </div>
       </div>
-      <div class="form-container">
+    </section>
+    </div>
+       <div class="form-container" id="form-container">
         <form action="" method="post" id="inputForm">
           <div class="form-text-container">
           <label for="title">Title</label>
@@ -53,7 +50,5 @@
           </div>
         </form>
       </div>
-    </section>
-    <footer></footer>
   </body>
 </html>
