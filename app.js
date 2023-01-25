@@ -43,7 +43,6 @@ function displayMovieLibrary() {
     myMovieLibrary.forEach((string) => {
         const splitString = string.split(', ');
         const [movieTitle, movieDirector, movieYear, movieRating, movieStatus] = splitString;
-        console.log([movieTitle, movieDirector, movieYear, movieRating, movieStatus]);
         title.innerHTML = movieTitle;
         director.innerHTML = movieDirector;
         year.innerHTML = movieYear;
@@ -89,10 +88,14 @@ function newCardId() {
 
 function addRemoveButtonToCard() {
     const removeButton = document.createElement('button');
+    const divContainer = document.getElementById(`card-${idCounter}`);
     removeButton.id = `button-${idCounter}`;
     removeButton.classList.add('card-remove-button');
     removeButton.innerText = 'Remove';
-    document.getElementById(`card-${idCounter}`).appendChild(removeButton);
+    divContainer.appendChild(removeButton);
+    removeButton.addEventListener('click', () => {
+        divContainer.remove();
+    });
 }
 
 function createCardInGrid() {
