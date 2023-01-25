@@ -1,7 +1,12 @@
 const addMovieBtn = document.getElementById('addMoviebtn');
+const wholreGrid = document.getElementById('card-grid');
 const movieForm = document.getElementById('inputForm');
 const myMovieLibrary = [];
-let idCounter = 0;
+let idCounter = -1;
+
+function newCardId() {
+    idCounter += 1;
+}
 
 function Movie(title, year, rating, director, status) {
     this.title = title;
@@ -82,10 +87,6 @@ function hideForm() {
     addMovieBtn.disabled = false;
 }
 
-function newCardId() {
-    idCounter += 1;
-}
-
 function addRemoveButtonToCard() {
     const removeButton = document.createElement('button');
     const divContainer = document.getElementById(`card-${idCounter}`);
@@ -123,4 +124,11 @@ movieForm.addEventListener('submit', (event) => {
     addMovieToLibrary();
     displayMovieLibrary();
     hideForm();
+});
+
+wholreGrid.addEventListener('click', (event) => {
+    console.log(event.target.id);
+    const eventToString = JSON.stringify(event.target.id);
+    const stringIndexNumber = eventToString.slice(-2, -1);
+    myMovieLibrary.splice(stringIndexNumber, 1);
 });
