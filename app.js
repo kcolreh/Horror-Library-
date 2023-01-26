@@ -90,9 +90,11 @@ function hideForm() {
 function addRemoveButtonToCard() {
     const removeButton = document.createElement('button');
     const divContainer = document.getElementById(`card-${idCounter}`);
+    const movieTitle = document.getElementById('title');
     removeButton.id = `button-${idCounter}`;
     removeButton.classList.add('card-remove-button');
     removeButton.innerText = 'Remove';
+    removeButton.dataset.buttonId = movieTitle.value;
     divContainer.appendChild(removeButton);
     removeButton.addEventListener('click', () => {
         divContainer.remove();
@@ -108,8 +110,8 @@ function createCardInGrid() {
         const paragraph = document.createElement('p');
         paragraph.innerText = '';
         paragraph.id = `paragraph-${i}-${idCounter}`;
-        document.getElementById(`card-${idCounter}`).appendChild(paragraph);
-    } addRemoveButtonToCard();
+        document.getElementById(`card-${(idCounter)}`).appendChild(paragraph);
+    }
 }
 
 addMovieBtn.addEventListener('click', () => {
@@ -120,6 +122,7 @@ addMovieBtn.addEventListener('click', () => {
 });
 
 movieForm.addEventListener('submit', (event) => {
+    addRemoveButtonToCard();
     event.preventDefault();
     addMovieToLibrary();
     displayMovieLibrary();
@@ -127,8 +130,10 @@ movieForm.addEventListener('submit', (event) => {
 });
 
 wholreGrid.addEventListener('click', (event) => {
-    console.log(event.target.id);
-    const eventToString = JSON.stringify(event.target.id);
-    const stringIndexNumber = eventToString.slice(-2, -1);
-    myMovieLibrary.splice(stringIndexNumber, 1);
+    const eventValue = event.target.dataset.buttonId;
+    myMovieLibrary.forEach((string) => {
+        if (string.includes(eventValue) === true) {
+            myMovieLibrary.splice(myMovieLibrary.indexOf(string), 1);
+        }
+    });
 });
