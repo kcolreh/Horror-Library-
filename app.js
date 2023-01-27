@@ -11,11 +11,10 @@ function newCardId() {
 function Movie(title, year, rating, director, status) {
     this.title = title;
     this.director = director;
-    this.status = status;
     this.year = year;
     this.rating = rating;
     this.returnMovieInfo = function returnMovieInfo() {
-        return `${title}, ${year}, ${rating}, ${director}, ${status}`;
+        return `${title}, ${year}, ${rating}, ${director}`;
     };
 }
 
@@ -24,13 +23,11 @@ function movieData() {
     const movieDirector = document.getElementById('director');
     const movieYear = document.getElementById('year');
     const movieRating = document.getElementById('rating');
-    const movieStatus = document.getElementById('status');
     const title = movieTitle.value;
     const director = movieDirector.value;
     const year = movieYear.value;
     const rating = movieRating.value;
-    const status = movieStatus.value;
-    return new Movie(title, year, rating, director, status);
+    return new Movie(title, year, rating, director);
 }
 
 function addMovieToLibrary() {
@@ -44,15 +41,13 @@ function displayMovieLibrary() {
     const director = document.getElementById(`paragraph-${1}-${idCounter}`);
     const year = document.getElementById(`paragraph-${2}-${idCounter}`);
     const rating = document.getElementById(`paragraph-${3}-${idCounter}`);
-    const status = document.getElementById(`paragraph-${4}-${idCounter}`);
     myMovieLibrary.forEach((string) => {
         const splitString = string.split(', ');
-        const [movieTitle, movieDirector, movieYear, movieRating, movieStatus] = splitString;
+        const [movieTitle, movieDirector, movieYear, movieRating] = splitString;
         title.innerHTML = movieTitle;
         director.innerHTML = movieDirector;
         year.innerHTML = movieYear;
         rating.innerHTML = movieRating;
-        status.innerHTML = movieStatus;
     });
 }
 
@@ -66,7 +61,7 @@ function clearFormData() {
     movieDirector.value = '';
     movieYear.value = '';
     movieRating.value = '';
-    movieStatus.value = '';
+    movieStatus.checked = false;
 }
 
 function showForm() {
@@ -101,6 +96,23 @@ function addRemoveButtonToCard() {
     });
 }
 
+function addBookReadButtonToCard() {
+    const bookReadButton = document.createElement('button');
+    const divContainer = document.getElementById(`card-${idCounter}`);
+    const bookReadCheckBox = document.getElementById('status');
+    bookReadButton.id = `button-status-${idCounter}`;
+    bookReadButton.classList.add('card-remove-button');
+    if (bookReadCheckBox.checked === true) {
+        bookReadButton.innerHTML = 'Watched';
+    } else (bookReadButton.innerHTML = 'Unwatched');
+    divContainer.appendChild(bookReadButton);
+    bookReadButton.addEventListener('click', () => {
+        if (bookReadButton.innerHTML === 'Watched') {
+            bookReadButton.innerHTML = 'Unwatched';
+        } else bookReadButton.innerHTML = 'Watched';
+    });
+}
+
 function createCardInGrid() {
     const divContainer = document.createElement('div');
     divContainer.id = `card-${idCounter}`;
@@ -122,6 +134,7 @@ addMovieBtn.addEventListener('click', () => {
 });
 
 movieForm.addEventListener('submit', (event) => {
+    addBookReadButtonToCard();
     addRemoveButtonToCard();
     event.preventDefault();
     addMovieToLibrary();
