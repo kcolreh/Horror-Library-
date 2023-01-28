@@ -118,7 +118,7 @@ function createCardInGrid() {
     divContainer.id = `card-${idCounter}`;
     divContainer.classList.add('cards');
     document.getElementById('card-grid').appendChild(divContainer);
-    for (let i = 0; i < 5; i += 1) {
+    for (let i = 0; i < 4; i += 1) {
         const paragraph = document.createElement('p');
         paragraph.innerText = '';
         paragraph.id = `paragraph-${i}-${idCounter}`;
@@ -130,10 +130,10 @@ addMovieBtn.addEventListener('click', () => {
     clearFormData();
     showForm();
     newCardId();
-    createCardInGrid();
 });
 
 movieForm.addEventListener('submit', (event) => {
+    createCardInGrid();
     addBookReadButtonToCard();
     addRemoveButtonToCard();
     event.preventDefault();
