@@ -11,19 +11,6 @@
   --clr-accent-300: hsl(347, 33%, 40%);
   --clr-accent-200: hsl(330, 29%, 58%);
   --clr-Lgreen-200: hsl(120, 73%, 75%);
-
-  --font-main: "horrorTwo";
-  --font-secondary: "horrorTwo";
-}
-
-@font-face {
-  font-family: "horrorOne";
-  src: url(./fonts/stranger_back_in_the_night/Stranger\ back\ in\ the\ Night.ttf);
-}
-
-@font-face {
-  font-family: "horrorTwo";
-  src: url(./fonts/true_crimes/crimes.ttf);
 }
 
 html,
