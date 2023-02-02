@@ -27,7 +27,7 @@ function movieData() {
     const director = movieDirector.value;
     const year = movieYear.value;
     const rating = movieRating.value;
-    return new Movie(title, year, rating, director);
+    return new Movie(title, director, year, rating);
 }
 
 function addMovieToLibrary() {
