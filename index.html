@@ -25,28 +25,29 @@
         <form action="" method="post" id="inputForm">
           <div class="form-text-container">
           <label for="title">Title</label>
-          <input type="text" id="title" name="title" required>
+          <input class="input" type="text" id="title" name="title" required>
           </div>
            <div class="form-text-container">
           <label for="director">Director</label>
-          <input type="text" id="director" name="director" required>
+          <input class="input" type="text" id="director" name="director" required>
           </div>
            <div class="form-text-container">
           <label for="year">Year</label>
-          <input type="number" id="year" name="year" required>
+          <input class="input" type="number" id="year" name="year" required>
           </div>
            <div class="form-text-container">
           <label for="rating">Rating</label>
-          <input type="number" id="rating" name="rating" min="0" max="10">
+          <input class="input" type="number" id="rating" name="rating" min="0" max="10" required>
           </div>
            <div class="form-text-container">
           <label for="status" class="form-checkbox">Have you watched it?</label>
-          <input type="checkbox" id="status" name="status" class="checkbox-input" required>
+          <input type="checkbox" id="status" name="status" class="checkbox-input">
           </div>
            <div class="form-button-container">
           <button id="form-input-button" class="form-input-button" type="submit">Submit</button>
           </div>
         </form>
       </div>
+      <footer></footer>
   </body>
 </html>

@@ -10,6 +10,7 @@
   --clr-accent-400: hsl(350, 95%, 29%);
   --clr-accent-300: hsl(347, 33%, 40%);
   --clr-accent-200: hsl(330, 29%, 58%);
+  --clr-Lgreen-200: hsl(120, 73%, 75%);
 
   --font-main: "horrorTwo";
   --font-secondary: "horrorTwo";
@@ -57,6 +58,7 @@ header > .title {
 .add-movie-button {
   padding: 1rem;
   font-size: larger;
+  font-weight: 600;
   background-color: var(--clr-accent-200);
   border: none;
   color: var(--clr-accent-600);
@@ -66,13 +68,13 @@ header > .title {
   background-color: var(--clr-accent-300);
   box-shadow: 0px 1px 5px 1px var(--clr-accent-300);
   color: var(--clr-primary-900);
-  font-weight: bolder;
   cursor: pointer;
 }
 
 .movie-card-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  overflow: auto;
   gap: 2rem;
   margin: 2rem;
 }
@@ -81,21 +83,63 @@ header > .title {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 5px black solid;
+  background-color: var(--clr-primary-700);
 }
 
 .cards > p {
   width: 80%;
   text-align: center;
-  border: black solid 2px;
+  background-color: var(--clr-primary-800);
+  color: var(--clr-neutral-white);
+  font-weight: 500;
   border-radius: 0.2rem;
+  padding: 0.5rem;
+  border-top: 2px solid var(--clr-neutral-white);
+  border-bottom: 1px solid var(--clr-neutral-white);
 }
 
 .cards > button {
   margin: 1rem;
-  height: 2.5rem;
-  width: 30%;
-  font-size: inherit;
+  height: 4rem;
+  width: 80%;
+  font-size: 1.2rem;
+  text-align: center;
+  font-weight: bold;
+  border: none;
+  color: var(--clr-neutral-white);
+  background-color: var(--clr-primary-800);
+}
+
+.cards > button:hover {
+  background-color: var(--clr-accent-500);
+  color: var(--clr-primary-900);
+  font-weight: bolder;
+  cursor: pointer;
+}
+
+.cards > .card-data-name {
+  font-size: 1.5rem;
+  color: var(--clr-neutral-white);
+  padding-top: 1.5rem;
+}
+
+.cards > :first-child {
+  padding-top: 1.5rem;
+}
+
+.cards > .movie-watched {
+  background-color: var(--clr-Lgreen-200);
+}
+.cards > .movie-watched:hover {
+  background-color: var(--clr-Lgreen-200);
+}
+
+.cards > .movie-unwatched {
+  background-color: var(--clr-accent-500);
+}
+
+.cards > .movie-unwatched:hover {
+  background-color: var(--clr-accent-500);
 }
 
 .form-container {
@@ -179,20 +223,24 @@ input[type="number"] {
 }
 
 form > div > input:hover {
-  background-color: var(--clr-accent-500);
-  box-shadow: 0px 1px 8px 1px var(--clr-accent-500);
-  color: var(--clr-primary-900);
   font-weight: bolder;
   cursor: pointer;
 }
 
 form > div > input:focus {
-  background-color: var(--clr-accent-500);
-  box-shadow: 0px 1px 8px 1px var(--clr-accent-500);
-  color: var(--clr-primary-900);
   font-weight: bolder;
   cursor: pointer;
   outline: none;
+}
+
+form > div > input:invalid {
+  box-shadow: 0px 1px 3px 1px var(--clr-accent-500);
+  color: var(--clr-primary-900);
+}
+
+form > div > .input:valid {
+  box-shadow: 0px 1px 3px 1px var(--clr-Lgreen-200);
+  color: var(--clr-primary-900);
 }
 
 form > div > button:hover {

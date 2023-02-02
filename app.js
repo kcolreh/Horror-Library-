@@ -8,7 +8,7 @@ function newCardId() {
     idCounter += 1;
 }
 
-function Movie(title, year, rating, director, status) {
+function Movie(title, year, rating, director) {
     this.title = title;
     this.director = director;
     this.year = year;
@@ -101,15 +101,24 @@ function addBookReadButtonToCard() {
     const divContainer = document.getElementById(`card-${idCounter}`);
     const bookReadCheckBox = document.getElementById('status');
     bookReadButton.id = `button-status-${idCounter}`;
-    bookReadButton.classList.add('card-remove-button');
-    if (bookReadCheckBox.checked === true) {
-        bookReadButton.innerHTML = 'Watched';
-    } else (bookReadButton.innerHTML = 'Unwatched');
+    bookReadButton.classList.add('card-status-button');
     divContainer.appendChild(bookReadButton);
-    bookReadButton.addEventListener('click', () => {
-        if (bookReadButton.innerHTML === 'Watched') {
-            bookReadButton.innerHTML = 'Unwatched';
-        } else bookReadButton.innerHTML = 'Watched';
+    if (bookReadCheckBox.checked === true) {
+        bookReadButton.classList.add('movie-watched');
+        bookReadButton.textContent = 'Watched';
+    } else if (bookReadCheckBox.checked === false) {
+        bookReadButton.textContent = 'Unwatched';
+        bookReadButton.classList.add('movie-unwatched');
+    } bookReadButton.addEventListener('click', () => {
+        if (bookReadButton.classList.contains('movie-watched') === true) {
+            bookReadButton.classList.remove('movie-watched');
+            bookReadButton.classList.add('movie-unwatched');
+            bookReadButton.textContent = 'Unwatched';
+        } else if (bookReadButton.classList.contains('movie-watched') === false) {
+            bookReadButton.classList.remove('movie-unwatched');
+            bookReadButton.classList.add('movie-watched');
+            bookReadButton.textContent = 'Watched';
+        }
     });
 }
 
@@ -120,10 +129,19 @@ function createCardInGrid() {
     document.getElementById('card-grid').appendChild(divContainer);
     for (let i = 0; i < 4; i += 1) {
         const paragraph = document.createElement('p');
+        const dataName = document.createElement('div');
+        dataName.textContent = 'test';
+        dataName.classList = 'card-data-name';
+        dataName.id = `dataName-${i}-${idCounter}`;
         paragraph.innerText = '';
         paragraph.id = `paragraph-${i}-${idCounter}`;
+        document.getElementById(`card-${(idCounter)}`).appendChild(dataName);
         document.getElementById(`card-${(idCounter)}`).appendChild(paragraph);
     }
+    document.getElementById(`dataName-${0}-${idCounter}`).textContent = 'Title';
+    document.getElementById(`dataName-${1}-${idCounter}`).textContent = 'Director';
+    document.getElementById(`dataName-${2}-${idCounter}`).textContent = 'Release Year';
+    document.getElementById(`dataName-${3}-${idCounter}`).textContent = 'Rating';
 }
 
 addMovieBtn.addEventListener('click', () => {
